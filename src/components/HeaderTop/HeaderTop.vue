@@ -11,10 +11,14 @@
        </header>
 </template>
 <script>
+// import {mapState} from 'vuex'
 export default {
    props:{
        title:String
-   } 
+   }
+//    computed:{
+//        ...mapState(['address'])
+//    }
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">

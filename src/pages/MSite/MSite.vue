@@ -14,7 +14,7 @@
        </header> -->
 
        <!-- 这个地方用插槽的技术代替上面的<header>这个里面的内容 -->
-       <HeaderTop title="昌平区">
+       <HeaderTop :title="address.name">
             <span class="header_search" slot="left">
                <i class="iconfont icon_sousuo"></i>
            </span>
@@ -39,20 +39,69 @@
 <script>
 import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
 import Swiper from 'swiper'
-
+import {mapState} from 'vuex'
 
 export default {
+    data (){
+        return {
+            baseImageUrl:'https://fuss10.elemecdn.com/'
+        }
+    },
     mounted(){
-        //创建一个Swiper实例对象，来实现轮播
-        new Swiper('.swiper-container',{
+        this.$store.dispatch('getCategorys')
+        this.$store.dispatch('getShops')
+    },
+    components:{
+        HeaderTop
+    },
+    watch:{
+        categorys (value){//如果执行了这个函数，说明categorys数组中有数据了
+           //创建一个Swiper实例对象，来实现轮播
+        // new Swiper('.swiper-container',{
+        //     loop:true,//循环轮播
+        //     pagination:{
+        //       el:'.swiper-pagination', 
+        //     },
+        // })
+
+        // 界面更新就立即创建swiper对象的回调函数
+        this.$nextTick(() => { // 一旦完成界面更新，立即调用
+             new Swiper('.swiper-container',{
             loop:true,//循环轮播
             pagination:{
               el:'.swiper-pagination', 
             },
         })
+        })
+        }
     },
-    components:{
-        HeaderTop
+    computed:{
+       ...mapState(['address','categorys']),
+       /**
+        * 根据categorys一维数组生成一个2维数组
+        * 小数组中的元素个数最大是8个
+        */
+       categorysArr(){
+           const {categorys} =this
+           //准备空的二维数组
+           const arr = []
+           //准备一个小数组（最大长度是8）
+           let minArr = []
+           //遍历categorys
+           categorys.forEach(c => { 
+               if (minArr.length===8) {
+                   minArr = []
+               }
+
+               if(minArr.length===0){
+                   arr.push(minArr)
+               }
+
+               //将当前分类保存到小数组中
+               minArr.push(c)
+           });
+           return arr
+       }
     }
 }
 </script>
