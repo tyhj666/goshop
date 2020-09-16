@@ -4,7 +4,8 @@
  */
 import {
   REVEIVE_ADDRESS,
-  REVEIVE_CATEGORYS
+  REVEIVE_CATEGORYS,
+  REVEIVE_USER_INFO
   // REVEIVE_SHOPS
 } from './mutation-types'
 import {
@@ -33,7 +34,7 @@ export default {
       const categorys = result.data
       commit(REVEIVE_CATEGORYS, {categorys})
     }
-  }
+  },
   // 异步获取商家列表
   // async getShops ({commit,state}) {
   //   // 发送异步ajax请求
@@ -45,5 +46,10 @@ export default {
   //     commit(REVEIVE_SHOPS, {shops})
   //   }
   // }
+
+  // 同步记录用户信息
+  recordUser ({commit}, userInfo) {
+    commit(REVEIVE_USER_INFO, {userInfo})
+  }
 
 }
