@@ -12,7 +12,7 @@ import {
   reqAddress,
   reqFoodCategorys
   // reqShops
-} from '../api/index.js'
+} from '../api'
 export default {
   // 异步获取地址
   async getAddress ({commit, state}) {
