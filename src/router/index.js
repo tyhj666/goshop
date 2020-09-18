@@ -10,10 +10,6 @@ import Order from '../pages/Order/Order.vue'
 import Profile from '../pages/Profile/Profile.vue'
 import Search from '../pages/Search/Search.vue'
 import Login from '../pages/Login/Login.vue'
-import Shop from '../pages/shop/shop.vue'
-import shopGoods from '../pages/shop/shopGoods/shopGoods.vue'
-import shopRatings from '../pages/shop/shopRatings/shopRatings.vue'
-import shopInfo from '../pages/shop/shopInfo/shopInfo.vue'
 // 声明使用vue插件
 Vue.use(VueRouter)
 // 有vueRouter构造函数创建一个路由器的实例，并传入配置对象
@@ -55,28 +51,6 @@ export default new VueRouter({
     {
       path: '/',
       redirect: '/msite'
-    },
-    {
-      path: '/shop',
-      component: Shop,
-      children: [
-        {
-          path: '/shop/goods',
-          component: shopGoods
-        },
-        {
-          path: '/shop/ratings',
-          component: shopRatings
-        },
-        {
-          path: '/shop/info',
-          component: shopInfo
-        },
-        {
-          path: '',
-          component: '/shop/goods'
-        }
-      ]
     }
   ]
 })

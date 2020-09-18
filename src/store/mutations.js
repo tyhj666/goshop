@@ -6,11 +6,7 @@
 import {
   REVEIVE_ADDRESS,
   REVEIVE_CATEGORYS,
-  REVEIVE_SHOPS,
-  REVEIVE_USER_INFO,
-  RECEIVE_GOODS,
-  RECEIVE_RATINGS,
-  RECEIVE_INFO
+  REVEIVE_SHOPS
 } from './mutation-types'
 export default {
   [REVEIVE_ADDRESS] (state, {address}) {
@@ -21,17 +17,5 @@ export default {
   },
   [REVEIVE_SHOPS] (state, {shops}) {
     state.shops = shops
-  },
-  [REVEIVE_USER_INFO] (state, {userInfo}) {
-    state.userInfo = userInfo
-  },
-  [RECEIVE_GOODS] (state, {goods}) {
-    state.goods = goods
-  },
-  [RECEIVE_RATINGS] (state, {ratings}) {
-    state.ratings = ratings
-  },
-  [RECEIVE_INFO] (state, {info}) {
-    state.info = info
   }
 }
