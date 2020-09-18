@@ -7,15 +7,10 @@
     </div>
 </template>
 <script>
-// 读取state里面的user数据
-import {mapState} from 'vuex'
 import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
 export default {
     components:{
         HeaderTop
-    },
-    computed:{
-      ...mapState(['userInfo'])
     }
 }
 </script>
